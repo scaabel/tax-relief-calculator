@@ -1,0 +1,51 @@
+{
+    "name": "kenyalang/tax-relief-calculator",
+    "description": "A package to calculate tax relief for Malaysians",
+    "keywords": [
+        "kenyalang",
+        "tax-relief-calculator"
+    ],
+    "homepage": "https://github.com/kenyalang/tax-relief-calculator",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Scalia Abel",
+            "email": "ariev.scalia@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kenyalang\\TaxReliefCalculator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kenyalang\\TaxReliefCalculator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kenyalang\\TaxReliefCalculator\\TaxReliefCalculatorServiceProvider"
+            ]
+        }
+    }
+}

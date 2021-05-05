@@ -6,9 +6,9 @@ use Illuminate\Support\Str;
 
 class TaxReliefCalculator
 {
-    public int $individualRelief = 9000;
+    public static int $individualRelief = 9000;
 
-    public array $claimTypes = [
+    public static array $claimTypes = [
         'parent_medical',
         'parent_relief'
     ];
@@ -19,9 +19,9 @@ class TaxReliefCalculator
      * @return int
      * @throws \Exception
      */
-    public function calculateTaxRelief(string $claimType, ?int $numberOfParents)
+    public static function calculateTaxRelief(string $claimType, ?int $numberOfParents)
     {
-        if (!in_array($claimType, $this->claimTypes)) {
+        if (!in_array($claimType, static::$claimTypes)) {
             throw new \Exception('Invalid number of parents');
         }
 
@@ -32,19 +32,19 @@ class TaxReliefCalculator
         switch ($numberOfParents) {
             case 1:
             case 2:
-                $currentTaxRelief = $this->{$action}($numberOfParents);
+                $currentTaxRelief = static::{$action}($numberOfParents);
                 break;
             default:
-                $currentTaxRelief = $this->{$action}();
+                $currentTaxRelief = static::{$action}();
         }
 
-        return $this->individualRelief + $currentTaxRelief;
+        return static::$individualRelief + $currentTaxRelief;
     }
 
     /*
      * @return int
      */
-    public function calculateParentMedical(): int
+    public static function calculateParentMedical(): int
     {
         return 5000;
     }
@@ -52,7 +52,7 @@ class TaxReliefCalculator
     /*
      * @return int
      */
-    public function calculateParentRelief(int $numberOfParents): int
+    public static function calculateParentRelief(int $numberOfParents): int
     {
         if ($numberOfParents > 2 || $numberOfParents === 0) {
             throw new \Exception('Invalid number of parents');

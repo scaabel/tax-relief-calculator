@@ -17,7 +17,7 @@ class CalculateTaxReliefTest extends TestCase
 
         $claimType === 'parent_relief' && $numberOfParents = Arr::random([1,2]);
 
-        $taxRelief = (new TaxReliefCalculator())->calculateTaxRelief($claimType, $numberOfParents);
+        $taxRelief = TaxReliefCalculator::calculateTaxRelief($claimType, $numberOfParents);
 
         switch ($claimType) {
             case 'parent_medical':

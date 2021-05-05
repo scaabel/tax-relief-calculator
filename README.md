@@ -17,7 +17,11 @@ composer require kenyalang/tax-relief-calculator
 Just instantiate the TaxReliefCalculator class and pass in the required parameters.
 
 ```php
-(new \Kenyalang\TaxReliefCalculator\TaxReliefCalculator())->calculateTaxRelief($claimType, $numberOfParents);
+<?php
+
+use \Kenyalang\TaxReliefCalculator\TaxReliefCalculator;
+
+TaxReliefCalculator::calculateTaxRelief($claimType, $numberOfParents);
 ```
 
 ### Testing

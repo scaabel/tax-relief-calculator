@@ -22,7 +22,7 @@ class TaxReliefCalculator
     public static function calculateTaxRelief(string $claimType, ?int $numberOfParents)
     {
         if (!in_array($claimType, static::$claimTypes)) {
-            throw new \Exception('Invalid number of parents');
+            throw new \Exception('Invalid claim type');
         }
 
         $method = Str::studly($claimType);
